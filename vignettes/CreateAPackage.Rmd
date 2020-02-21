@@ -1,0 +1,122 @@
+---
+title: "Create A Package"
+author:
+- name: Kayla Interdonato
+  affiliation: Roswell Park Comprehensive Cancer Center, Buffalo, NY
+- name: Lori Shepherd
+  affiliation: Roswell Park Comprehensive Cancer Center, Buffalo, NY
+date: "`r Sys.Date()`"
+output:
+    BiocStyle::html_document:
+      toc: true
+      toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Create A Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Create A Package
+
+A package is a collection of functions that work together in a cohesive manner 
+to achieve a goal. It (should) include detailed documentation through man pages 
+and vignettes and (should) be tested for accuracy and efficiency. [Writing R extensions](https://cran.r-project.org/doc/manuals/r-release/R-exts.html) 
+is a very detailed manual provided by CRAN that explains writing packages and 
+what the structure of a package should look like. This vignette is going to walk 
+you through making your first package in RStudio as well as how to submitt a 
+package to _Bioconductor_.
+
+## Using `devtools` to create a package
+
+The `devtools` package provides a lot of options and utility for helping to 
+construct a new package. You can get a list of all available `devtools` functions 
+with `ls("package:devtools")`.
+
+Some useful references for using `devtools` to build packages are [Rstudio Devtools Cheetsheet](https://www.rstudio.com/wp-content/uploads/2015/03/devtools-cheatsheet.pdf) and [Jennifer Bryan class](http://stat545.com/packages06_foofactors-package.html).
+
+### Package shell
+``{r, eval = FALSE}
+library(devtools)
+create("myFirstPackage")
+```
+
+`create()` will _create_ all the necessary files and sub-directories that are 
+required by R to be a valid package: DESCRIPTION, NAMESPACE, and R directory. 
+The DESCRIPTION file contains the basic information about the package and you 
+will have to edit so that the information is pertinent to your package. The 
+NAMESPACE file describes which functions will be imports and exports of the 
+namespace. The R directory will contain the R code files for your package.
+
+After running `create()`, the package has a vaild package structure which means 
+it can be installed and loaded: `install("myFirstPackage")`, 
+`library("myFirstPackage")`, `library(help="myFirstPackage")`.
+
+### Version control
+
+It is an excellent idea to version control whenever creating a package and 
+especially when collaborating on a project, where multiple users are allowed to 
+make changes. Version control allows for a constant recored of changes that can 
+be advanced or reverted if necessary.
+
+Only a project can be version controlled and to make a directory a project in 
+RStudio go to: `File -> New Project`. In this case we started creating the 
+directory so we will follow the prompts for the option `Use Existing Directory`. 
+Now that it is a project we can go to `Tools -> Version Control -> Project Setup` 
+and change the `Version Control System` to `Git`, then follow the prompts. 
+Notice in the RStudio pane for environments/history/build there is a new tab 
+named 'Git'. The package can now start using `git` version control through 
+making commits. To make a commit, you can go to the Git tab, select the check 
+box next to any files that have been modified, added, or deleted that you would 
+like to track, and select `commit`. Enter a new commit message in the window 
+that pops up and select `commit`.
+
+It is important to tell Git just who we are. In RStudio, select `Tools -> Shell` 
+and type the following making sure to substitue *your* user.email and user.name.
+If you have githum we recommend using your email and user.name associated with 
+github here. 
+
+```
+git config --global user.email "<someemail@gmail.com>"
+git config --global user.name "<githubUserName>"
+```
+
+We could stop here but we also would like to put the package on GitHub. These 
+next steps assume you have a github account. First, in RStudio go to `Tools -> 
+Global Options` and select Git/SVN. Ensure the paths are correct. If you have 
+not linked an RStudio project to GitHub, select `Create RSA key`. Close the 
+window. Click on `View public key` and copy the displayed public key. Now in a 
+web browser, open your GitHub accout. Go to `Settings` and `SSH and GPG keys`. 
+Click on the option for `New SSH key` and paste the public key that was copied. 
+Also on GitHub, create a new repository with the same name as the one you 
+created with `create()` in RStudio. Back in RStudio, select `Tools -> Shell` and 
+type the following making usre to substitue your GitHub user.name and the new 
+package name.
+
+```
+git remote add origin https://github.com/<github user.name>/<package repo name>.git
+git config remote.origin.url git@github.com:<github user.name>/<package repo name>.git
+git pull origin master
+git push -u origin master
+```
+
+For instance, this is what the commands would look like for me:
+
+```
+git remote add origin https://github.com/Kayla-Morrell/myFirstPackage.git
+git config remote.origin.url git@github.com:Kayla-Morrell/myFirstPackage.git
+git pull origin master
+git push -u origin master
+```
+
+The `git remote add` command will create a new connection to the remote 
+repository url and assign it the shortname 'origin' for easy referencing moving 
+forward. Then the `git config remote.origin.url` command is going to switch the 
+url of the remote from 'https', which is public read only access, to 'SSH' so 
+that you as a developer can have read and write access to the repository. `git 
+pull` is going to fetch and download content from the remote repository and 
+update the local repository to match. `git push` does the exact opposite, it 
+will upload the local repo changes to the remote repo.
+
+Now if you look in the RStudio tab for Git, the push and pull options are 
+available. You can now push and pull from/to the local and GitHub repository 
+version of your package. 
