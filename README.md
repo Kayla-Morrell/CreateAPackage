@@ -45,7 +45,8 @@ below, but we could simplify to 1 hour if need be.
 | Testing                    | 15m  |
 | Vignettes                  | 15m  |
 | Bioconductor standards     | 20m  |
-| Submitting to Bioconductor | 30m  |
+| Submitting to Bioconductor | 15m  |
+| Wrap up questions          | 15m  |
 
 # Workshop goals and objectives
 
