@@ -1,7 +1,6 @@
 Package: CreateAPackage
-Type: Package
 Title: Material on how to create and submit a package to Bioconductor
-Version: 0.1.0
+Version: 0.1.1
 Authors@R": c(
     person("Kayla", "Interdonato", role=c("aut", "cre"),
         email = "kayla.morrell@roswellpark.org"),
@@ -11,12 +10,18 @@ Description: The vignette provided has a basic sketch of the steps we
     ineractively will go through to build a package with devtools, explains    
     version control with git, provides links to github, gives Bioconductor 
     advice, and lays out the process of submitting to Bioconductor.
-Depends: devtools
 License: Artistic-2.0
 Encoding: UTF-8
+LazyDate: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+Depends: devtools
 Suggests: knitr,
     rmarkdown,
     testthat,
     BiocStyle,
     roxygen2
+URL: https://Kayla-Morrell.github.io/CreateAPackage/
+BugReports: https://github.com/Kayla-Morrell/CreateAPackage/issues
 VignetteBuilder: knitr
+DockerImage: kaylainterdonato01/createapackage:latest
