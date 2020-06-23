@@ -20,7 +20,8 @@ Suggests: knitr,
     rmarkdown,
     testthat,
     BiocStyle,
-    roxygen2
+    roxygen2,
+    pkgdown
 URL: https://Kayla-Morrell.github.io/CreateAPackage/
 BugReports: https://github.com/Kayla-Morrell/CreateAPackage/issues
 VignetteBuilder: knitr
