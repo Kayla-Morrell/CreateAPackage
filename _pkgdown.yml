@@ -1,0 +1,18 @@
+url: https://Kayla-Morrell.github.io/CreateAPackage/
+
+template:
+  params:
+    bootswatch: flatly
+    ganalytics: UA-93043521-1
+
+home:
+  title: "CreateAPackage"
+  type: inverse
+
+
+navbar:
+  right:
+   - icon: fa-github
+     href: https://github.com/Kayla-Morrell/CreateAPackage
+     
+
