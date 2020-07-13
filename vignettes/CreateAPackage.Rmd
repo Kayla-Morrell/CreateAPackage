@@ -272,8 +272,8 @@ The package will still go through a formal review process.
 
 ### Submitting to Bioconductor
 
-Be sure to r ead the [Contributions Page](https://github.com/Bioconductor/Contributions) and 
+Be sure to read the [Contributions Page](https://github.com/Bioconductor/Contributions) and 
 when you are ready to submit open a [New Issue](https://github.com/Bioconductor/Contributions/issues). 
 The Title: should be the name of your package. Once the package is approved for 
-building, don't forget to set up the [webhook](https://github.com/Bioconductor/Contributions/blob/master/CONTRIBUTING.md#adding-a-web-hook). 
+building, don't forget to set up the [remotes](https://bioconductor.org/developers/how-to/git/new-package-workflow/). 
 Some details about the review process can be found [here](http://bioconductor.org/developers/package-submission/#whattoexpect).
