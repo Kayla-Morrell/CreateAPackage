@@ -110,8 +110,6 @@
 <p>After running <code><a href="https://devtools.r-lib.org//reference/create.html">create()</a></code>, the package has a vaild package structure which means it can be installed and loaded:</p>
 <ul>
 <li>
-<code><a href="https://devtools.r-lib.org//reference/install.html">install("myFirstPackage")</a></code>,</li>
-<li>
 <code><a href="https://rdrr.io/pkg/myFirstPackage/man">library("myFirstPackage")</a></code>,</li>
 <li>
 <code><a href="https://rdrr.io/pkg/myFirstPackage/man">library(help="myFirstPackage")</a></code>.</li>
@@ -122,20 +120,20 @@
 <a href="#version-control" class="anchor"></a>Version control</h3>
 <p>It is an excellent idea to version control whenever creating a package and especially when collaborating on a project, where multiple users are allowed to make changes. Version control allows for a constant recored of changes that can be advanced or reverted if necessary.</p>
 <p>Only a project can be version controlled and to make a directory a project in RStudio go to: <code>File -&gt; New Project</code>. In this case we started creating the directory so we will follow the prompts for the option <code>Use Existing Directory</code>. Now that it is a project we can go to <code>Tools -&gt; Version Control -&gt; Project Setup</code> and change the <code>Version Control System</code> to <code>Git</code>, then follow the prompts. Notice in the RStudio pane for environments/history/build there is a new tab named ‘Git’. The package can now start using <code>git</code> version control through making commits. To make a commit, you can go to the Git tab, select the check box next to any files that have been modified, added, or deleted that you would like to track, and select <code>commit</code>. Enter a new commit message in the window that pops up and select <code>commit</code>.</p>
-<p>It is important to tell Git just who we are. In RStudio, select <code>Tools -&gt; Shell</code> and type the following making sure to substitue <em>your</em> user.email and user.name. If you have githum we recommend using your email and user.name associated with github here.</p>
+<p>It is important to tell Git just who we are. In RStudio, select <code>Tools -&gt; Shell</code> and type the following making sure to substitue <em>your</em> user.email and user.name. If you have github we recommend using your email and user.name associated with github here.</p>
 <pre><code>git config --global user.email "&lt;someemail@gmail.com&gt;"
 git config --global user.name "&lt;githubUserName&gt;"</code></pre>
 <p>We could stop here but we also would like to put the package on GitHub. These next steps assume you have a github account. First, in RStudio go to <code>Tools -&gt;  Global Options</code> and select Git/SVN. Ensure the paths are correct. If you have not linked an RStudio project to GitHub, select <code>Create RSA key</code>. Close the window. Click on <code>View public key</code> and copy the displayed public key. Now in a web browser, open your GitHub accout. Go to <code>Settings</code> and <code>SSH and GPG keys</code>. Click on the option for <code>New SSH key</code> and paste the public key that was copied. Also on GitHub, create a new repository with the same name as the one you created with <code><a href="https://devtools.r-lib.org//reference/create.html">create()</a></code> in RStudio. Back in RStudio, select <code>Tools -&gt; Shell</code> and type the following making usre to substitue your GitHub user.name and the new package name.</p>
 <pre><code>git remote add origin https://github.com/&lt;github user.name&gt;/&lt;package repo name&gt;.git
-git config remote.origin.url git@github.com:&lt;github user.name&gt;/&lt;package repo name&gt;.git
+git remote set-url origin git@github.com:&lt;github user.name&gt;/&lt;package repo name&gt;.git
 git pull origin master
 git push -u origin master</code></pre>
 <p>For instance, this is what the commands would look like for me:</p>
 <pre><code>git remote add origin https://github.com/Kayla-Morrell/myFirstPackage.git
-git config remote.origin.url git@github.com:Kayla-Morrell/myFirstPackage.git
+git remote set-url origin git@github.com:Kayla-Morrell/myFirstPackage.git
 git pull origin master
 git push -u origin master</code></pre>
-<p>The <code>git remote add</code> command will create a new connection to the remote repository url and assign it the shortname ‘origin’ for easy referencing moving forward. Then the <code>git config remote.origin.url</code> command is going to switch the url of the remote from ‘https’, which is public read only access, to ‘SSH’ so that you as a developer can have read and write access to the repository. <code>git  pull</code> is going to fetch and download content from the remote repository and update the local repository to match. <code>git push</code> does the exact opposite, it will upload the local repo changes to the remote repo.</p>
+<p>The <code>git remote add</code> command will create a new connection to the remote repository url and assign it the shortname ‘origin’ for easy referencing moving forward. Then the <code>git remote set-url</code> command is going to switch the url of the remote from ‘https’, which is public read only access, to ‘SSH’ so that you as a developer can have read and write access to the repository. <code>git  pull</code> is going to fetch and download content from the remote repository and update the local repository to match. <code>git push</code> does the exact opposite, it will upload the local repo changes to the remote repo.</p>
 <p>Now if you look in the RStudio tab for Git, the push and pull options are available. You can now push and pull from/to the local and GitHub repository version of your package.</p>
 </div>
 </div>
