@@ -1,6 +1,6 @@
 Package: CreateAPackage
 Title: Material on how to create and submit a package to Bioconductor
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: c(
     person("Kayla", "Interdonato", role=c("aut", "cre"),
         email = "kayla.morrell@roswellpark.org"),
@@ -22,7 +22,7 @@ Suggests: knitr,
     BiocStyle,
     roxygen2,
     pkgdown
-URL: https://Kayla-Morrell.github.io/CreateAPackage/
+URL: https://kayla-morrell.github.io/CreateAPackage/
 BugReports: https://github.com/Kayla-Morrell/CreateAPackage/issues
 VignetteBuilder: knitr
 DockerImage: kaylainterdonato01/createapackage:latest
