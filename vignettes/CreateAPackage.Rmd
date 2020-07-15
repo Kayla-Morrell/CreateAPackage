@@ -50,7 +50,6 @@ namespace. The R directory will contain the R code files for your package.
 After running `create()`, the package has a vaild package structure which means 
 it can be installed and loaded:
  
-* `install("myFirstPackage")`,
 * `library("myFirstPackage")`,
 * `library(help="myFirstPackage")`.
 
@@ -75,7 +74,7 @@ that pops up and select `commit`.
 
 It is important to tell Git just who we are. In RStudio, select `Tools -> Shell` 
 and type the following making sure to substitue *your* user.email and user.name.
-If you have githum we recommend using your email and user.name associated with 
+If you have github we recommend using your email and user.name associated with 
 github here. 
 
 ```
@@ -97,7 +96,7 @@ package name.
 
 ```
 git remote add origin https://github.com/<github user.name>/<package repo name>.git
-git config remote.origin.url git@github.com:<github user.name>/<package repo name>.git
+git remote set-url origin git@github.com:<github user.name>/<package repo name>.git
 git pull origin master
 git push -u origin master
 ```
@@ -106,14 +105,14 @@ For instance, this is what the commands would look like for me:
 
 ```
 git remote add origin https://github.com/Kayla-Morrell/myFirstPackage.git
-git config remote.origin.url git@github.com:Kayla-Morrell/myFirstPackage.git
+git remote set-url origin git@github.com:Kayla-Morrell/myFirstPackage.git
 git pull origin master
 git push -u origin master
 ```
 
 The `git remote add` command will create a new connection to the remote 
 repository url and assign it the shortname 'origin' for easy referencing moving 
-forward. Then the `git config remote.origin.url` command is going to switch the 
+forward. Then the `git remote set-url` command is going to switch the 
 url of the remote from 'https', which is public read only access, to 'SSH' so 
 that you as a developer can have read and write access to the repository. `git 
 pull` is going to fetch and download content from the remote repository and 

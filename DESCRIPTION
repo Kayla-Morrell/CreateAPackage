@@ -1,7 +1,7 @@
 Package: CreateAPackage
 Title: Material on how to create and submit a package to Bioconductor
 Version: 0.1.1
-Authors@R": c(
+Authors@R: c(
     person("Kayla", "Interdonato", role=c("aut", "cre"),
         email = "kayla.morrell@roswellpark.org"),
     person("Lori", "Shepherd", role = "aut",
